@@ -2,6 +2,7 @@
   PackagePath: ""
   objects:
     - !<own> 00000000-0000-0065-0000-000000000064
+    - !<own> 8f07ee4d-fe77-492c-bb0a-1547231d0ef0
     - !<own> 0005641c-028d-459a-0000-000000014b4d
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
@@ -169,3 +170,259 @@
   DecayType: None
   DecayLimit: false
   DecayRange: 40.000000
+- !<ScriptComponent/0ac1cea1-7ae3-4a54-9b35-66ada7771cc0>
+  PrefabRemaps:
+    []
+  Name: SecretsManager
+  Enabled: true
+  ScriptAsset: !<reference> 087dbe6b-9deb-4056-9d8c-4b4dafb846d9
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      remoteServiceCredentials: !<MappingBased.AssignableType> a4fbc6c6-049d-414d-9f35-c4c95fbd2b39
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/12119305-0595-4975-856b-8fbbd13df6b5>
+  PrefabRemaps:
+    []
+  Name: Detect
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 3f92fe8f-797a-49d3-a58c-80d666df5900
+- !<SceneObject/1549acdc-a973-45a7-b9d1-453324ad9a17>
+  PrefabRemaps:
+    []
+  Name: Calorie Manager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> be58b79e-f79e-4039-b392-f2ecfdc45637
+- !<SceneObject/1f1f13a6-cf58-4ad2-98ad-10231a1d0cd8>
+  PrefabRemaps:
+    []
+  Name: Credentials
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0ac1cea1-7ae3-4a54-9b35-66ada7771cc0
+    - !<own> a4fbc6c6-049d-414d-9f35-c4c95fbd2b39
+- !<SceneObject/204c77bf-7720-4acd-b801-3cf337e4d2dc>
+  PrefabRemaps:
+    []
+  Name: Camera
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f54ae76c-931e-4a6f-bb14-f2fcfe412471
+- !<ScriptComponent/340a12dc-01cd-4de4-978d-5fb096d10826>
+  PrefabRemaps:
+    []
+  Name: Gemini
+  Enabled: true
+  ScriptAsset: !<reference> c039cf6f-408f-4bcd-ad30-cd4b7df1f1c7
+  ScriptInputsDefault:
+    maxQueueSize: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      websocketRequirementsObj: !<reference.SceneObject> 1f1f13a6-cf58-4ad2-98ad-10231a1d0cd8
+      maxQueueSize: !<float> 5.000000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/3f92fe8f-797a-49d3-a58c-80d666df5900>
+  PrefabRemaps:
+    []
+  Name: FoodDetector
+  Enabled: true
+  ScriptAsset: !<reference> 69b0b21d-cb2d-4213-8773-17a427daec33
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cameraService: !<MappingBased.AssignableType> f54ae76c-931e-4a6f-bb14-f2fcfe412471
+      geminiClient: !<MappingBased.AssignableType_1> 340a12dc-01cd-4de4-978d-5fb096d10826
+      imagePrompt: |
+        You are a vision model. Analyze the image and return ONLY valid JSON.
+        
+        Detect all food items. You should try to consolidate food items into logical meals that could describe the whole food. For example, you may see a salad with mozzarella, tomatoes, etc. Instead of returning each individual item, you would just return the entire salad.
+        
+        For each item return:
+        
+        - name: string
+        - center: [x,y] normalized between 0 and 1
+        - calories: an approximate calorie estimate for the portion shown (very rough OK)
+        - quality: an approximate rating of whether the item is "healthy", "neutral", or "unhealthy" (very rough idea OK)
+        
+        Do not include non-food objects. 
+        Do not include explanation text.
+        
+        Respond ONLY with JSON in the following structure: 
+        \{ 
+          "items": [ 
+            \{ 
+              "name": "Chocolate Cookie", 
+              "center": [0.5,0.5],
+              "calories": 123,
+        "healthy": "unhealthy"
+            \} 
+          ] 
+        \}
+
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/8f07ee4d-fe77-492c-bb0a-1547231d0ef0>
+  PrefabRemaps:
+    []
+  Name: CalPal Logic
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 1f1f13a6-cf58-4ad2-98ad-10231a1d0cd8
+    - !<own> 1549acdc-a973-45a7-b9d1-453324ad9a17
+    - !<own> e114f935-0ef2-4ba3-adaf-37537c1390cb
+    - !<own> 204c77bf-7720-4acd-b801-3cf337e4d2dc
+    - !<own> 12119305-0595-4975-856b-8fbbd13df6b5
+    - !<own> f7556b82-3a7a-47e3-acfc-19c323388cb5
+  Components:
+    []
+- !<ScriptComponent/a4fbc6c6-049d-414d-9f35-c4c95fbd2b39>
+  PrefabRemaps:
+    []
+  Name: RemoteServiceGatewayCredentials
+  Enabled: true
+  ScriptAsset: !<reference> 37976aca-6847-44c8-88d9-5edb6aadbbf2
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      openAIToken: ""
+      googleToken: ""
+      snapToken: ""
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/bb5edaa6-1eaa-4522-8ea3-45b1e6a4c3a1>
+  PrefabRemaps:
+    []
+  Name: CalPal
+  Enabled: true
+  ScriptAsset: !<reference> 3b42af09-205c-416b-8451-cf5af007067f
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      foodDetector: !<MappingBased.AssignableType> 3f92fe8f-797a-49d3-a58c-80d666df5900
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/be58b79e-f79e-4039-b392-f2ecfdc45637>
+  PrefabRemaps:
+    []
+  Name: CalorieManager
+  Enabled: true
+  ScriptAsset: !<reference> fc4d473c-48de-49d9-bd3f-c8475f48a328
+  ScriptInputsDefault:
+    _currentCalorieCount: true
+    _calorieGoal: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _currentCalorieCount: !<float> 0.000000
+      _calorieGoal: !<float> 2000.000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/e114f935-0ef2-4ba3-adaf-37537c1390cb>
+  PrefabRemaps:
+    []
+  Name: Gemini
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 340a12dc-01cd-4de4-978d-5fb096d10826
+- !<ScriptComponent/f54ae76c-931e-4a6f-bb14-f2fcfe412471>
+  PrefabRemaps:
+    []
+  Name: CameraService
+  Enabled: true
+  ScriptAsset: !<reference> 85b93350-cb8b-4880-9d12-f7fb7412ff98
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cameraModule: !<reference.CameraModule> eacc93bb-bf8c-476e-bcf1-fbdd68c70286
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/f7556b82-3a7a-47e3-acfc-19c323388cb5>
+  PrefabRemaps:
+    []
+  Name: Cal Pal
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> bb5edaa6-1eaa-4522-8ea3-45b1e6a4c3a1

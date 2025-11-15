@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/786c190a-f618-456c-ac80-471ce84b4c25>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 69b0b21d-cb2d-4213-8773-17a427daec33
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 69b0b21d-cb2d-4213-8773-17a427daec33
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 38dd4b40-e247-4853-85f1-a8ef49e91cc6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/38dd4b40-e247-4853-85f1-a8ef49e91cc6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b0582ad2-7941-45e5-9004-3de220c314b8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cameraService: false
+    geminiClient: false
+    imagePrompt: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cameraService: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      geminiClient: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      imagePrompt: "What food items can you see in this image? Provide nutritional information."
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType cameraService
+    - // @input AssignableType_1 geminiClient
+    - '// @input string imagePrompt = "What food items can you see in this image? Provide nutritional information." {"hint":"The prompt to send with the camera image", "widget":"text_area"}'

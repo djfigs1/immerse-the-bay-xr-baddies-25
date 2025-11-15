@@ -1,20 +1,20 @@
-- !<AssetImportMetadata/dd6a1c8d-24d5-4be2-b470-1d18aa96ec6d>
+- !<AssetImportMetadata/e7eb5517-8e60-460c-b6a1-0ad7e1b4c9b2>
   ImportedAssetIds:
-    TypeScriptAsset: !<reference> fc4d473c-48de-49d9-bd3f-c8475f48a328
+    TypeScriptAsset: !<reference> 3b42af09-205c-416b-8451-cf5af007067f
   ImporterName: TypeScriptAssetImporter
-  PrimaryAsset: !<reference> fc4d473c-48de-49d9-bd3f-c8475f48a328
+  PrimaryAsset: !<reference> 3b42af09-205c-416b-8451-cf5af007067f
   PackageType: NotAPackage
   LegacyPackagePolicy: ~
   ExtraData:
     {}
   AssetDataMap:
-    TypeScriptAsset: !<own> be4999ba-2d37-40bc-82e6-3909d76cd931
+    TypeScriptAsset: !<own> 14c08589-17ea-43d0-aea0-767d2792861d
   DependentFiles:
     []
   ImporterSettings: !<AssetImporterSettings>
     {}
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
-- !<TypeScriptAssetData/be4999ba-2d37-40bc-82e6-3909d76cd931>
+- !<TypeScriptAssetData/14c08589-17ea-43d0-aea0-767d2792861d>
   SvgIcon: ""
   SetupScript:
     code: ""
@@ -22,12 +22,11 @@
   VersionMajor: 0
   VersionMinor: 0
   VersionPatch: 0
-  ComponentUid: 5d1ef46b-8182-456e-8d51-bccc92c799db
+  ComponentUid: 815e5a39-1d03-44c7-8132-1f4bb6f19896
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    _calorieGoal: false
-    _currentCalorieCount: false
+    foodDetector: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -37,11 +36,9 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - _currentCalorieCount: !<float> 0.000000
-      _calorieGoal: !<float> 2000.000000
+    - foodDetector: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
-    - // @input float _currentCalorieCount
-    - // @input float _calorieGoal = 2000
+    - // @input AssignableType foodDetector

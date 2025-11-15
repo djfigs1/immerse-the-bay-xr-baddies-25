@@ -1,20 +1,20 @@
-- !<AssetImportMetadata/dd6a1c8d-24d5-4be2-b470-1d18aa96ec6d>
+- !<AssetImportMetadata/bdfb1d14-8886-45c0-a7ef-3b324de77422>
   ImportedAssetIds:
-    TypeScriptAsset: !<reference> fc4d473c-48de-49d9-bd3f-c8475f48a328
+    TypeScriptAsset: !<reference> c039cf6f-408f-4bcd-ad30-cd4b7df1f1c7
   ImporterName: TypeScriptAssetImporter
-  PrimaryAsset: !<reference> fc4d473c-48de-49d9-bd3f-c8475f48a328
+  PrimaryAsset: !<reference> c039cf6f-408f-4bcd-ad30-cd4b7df1f1c7
   PackageType: NotAPackage
   LegacyPackagePolicy: ~
   ExtraData:
     {}
   AssetDataMap:
-    TypeScriptAsset: !<own> be4999ba-2d37-40bc-82e6-3909d76cd931
+    TypeScriptAsset: !<own> 7a8f2634-eb5a-4f7e-8f8d-13850ee0e0bb
   DependentFiles:
     []
   ImporterSettings: !<AssetImporterSettings>
     {}
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
-- !<TypeScriptAssetData/be4999ba-2d37-40bc-82e6-3909d76cd931>
+- !<TypeScriptAssetData/7a8f2634-eb5a-4f7e-8f8d-13850ee0e0bb>
   SvgIcon: ""
   SetupScript:
     code: ""
@@ -22,12 +22,12 @@
   VersionMajor: 0
   VersionMinor: 0
   VersionPatch: 0
-  ComponentUid: 5d1ef46b-8182-456e-8d51-bccc92c799db
+  ComponentUid: 42a9b321-f620-4d0b-aba5-0b11f93e2915
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    _calorieGoal: false
-    _currentCalorieCount: false
+    maxQueueSize: false
+    websocketRequirementsObj: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -37,11 +37,11 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - _currentCalorieCount: !<float> 0.000000
-      _calorieGoal: !<float> 2000.000000
+    - websocketRequirementsObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      maxQueueSize: !<float> 5.000000
   ScriptTypes:
     -
       {}
   InputLines:
-    - // @input float _currentCalorieCount
-    - // @input float _calorieGoal = 2000
+    - // @input SceneObject websocketRequirementsObj
+    - '// @input float maxQueueSize = 5 {"hint":"Maximum number of requests to queue (default: 5)"}'
