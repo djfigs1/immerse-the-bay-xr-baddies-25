@@ -144,17 +144,19 @@ export class Character extends BaseScriptComponent {
     this.rotatingRabbit.enabled = false;
 
     // Show only the active state model
-    switch (state) {
+    switch (this.currentState) {
       case RabbitState.TailWag:
-        if (this.tailWagRabbit) {
+        if (this.tailWagRabbit !== undefined) {
           this.tailWagRabbit.enabled = true;
+          this.restartAnimations(this.tailWagRabbit);
         } else {
           print("Warning: Tail wag rabbit model not assigned");
         }
         break;
       case RabbitState.Ears:
-        if (this.rabbitEars) {
+        if (this.rabbitEars !== undefined) {
           this.rabbitEars.enabled = true;
+          this.restartAnimations(this.rabbitEars);
         } else {
           print("Warning: Rabbit ears model not assigned");
         }
@@ -162,6 +164,7 @@ export class Character extends BaseScriptComponent {
       case RabbitState.Green:
         if (this.greenRabbit) {
           this.greenRabbit.enabled = true;
+          this.restartAnimations(this.greenRabbit);
         } else {
           print("Warning: Green rabbit model not assigned");
         }
@@ -169,6 +172,7 @@ export class Character extends BaseScriptComponent {
       case RabbitState.Orange:
         if (this.orangeRabbit) {
           this.orangeRabbit.enabled = true;
+          this.restartAnimations(this.orangeRabbit);
         } else {
           print("Warning: Orange rabbit model not assigned");
         }
@@ -176,6 +180,7 @@ export class Character extends BaseScriptComponent {
       case RabbitState.Red:
         if (this.redRabbit) {
           this.redRabbit.enabled = true;
+          this.restartAnimations(this.redRabbit);
         } else {
           print("Warning: Red rabbit model not assigned");
         }
@@ -183,6 +188,7 @@ export class Character extends BaseScriptComponent {
       case RabbitState.Rotating:
         if (this.rotatingRabbit) {
           this.rotatingRabbit.enabled = true;
+          this.restartAnimations(this.rotatingRabbit);
         } else {
           print("Warning: Rotating rabbit model not assigned");
         }
@@ -210,5 +216,34 @@ export class Character extends BaseScriptComponent {
    */
   getState(): RabbitState {
     return this.currentState;
+  }
+
+  /**
+   * Restart all animations in child AnimationPlayer components
+   * @param parent The parent scene object to search for AnimationPlayer components
+   */
+  private restartAnimations(parent: SceneObject): void {
+    if (!parent) {
+      return;
+    }
+
+    // Check if this object has an AnimationPlayer component
+    const animPlayer = parent.getComponent(
+      "Component.AnimationPlayer"
+    ) as AnimationPlayer;
+    if (animPlayer) {
+      // Restart the animation from the beginning by toggling enabled
+      animPlayer.stopAll();
+      animPlayer.playAll();
+    } else {
+      print("Warning: AnimationPlayer component not found on scene object");
+    }
+
+    // Recursively check all children
+    const childCount = parent.getChildrenCount();
+    for (let i = 0; i < childCount; i++) {
+      const child = parent.getChild(i);
+      this.restartAnimations(child);
+    }
   }
 }

@@ -4,6 +4,8 @@ import { DepthCache } from "./DepthCache";
 import { Marker } from "Scripts/UI/Marker";
 import { Character, RabbitState } from "Scripts/Character/Character";
 
+const SELECT_DURATION = 5.0;
+
 @component
 export class FoodDetector extends BaseScriptComponent {
   @input
@@ -35,6 +37,11 @@ export class FoodDetector extends BaseScriptComponent {
    * Detect food items in the current camera view
    */
   async detect(tex: Texture): Promise<FoodDetectionResult[]> {
+    // Set character to thinking state
+    if (this.character) {
+      this.character.setState(RabbitState.Ears);
+    }
+
     // Capture snapshot from camera
     const snapshot = ProceduralTextureProvider.createFromTexture(tex);
 
@@ -58,9 +65,18 @@ export class FoodDetector extends BaseScriptComponent {
       const data = JSON.parse(jsonText);
       const results = this.validateFoodDetectionResults(data);
 
+      // Return to default state after detection completes
+      if (this.character) {
+        this.character.setState();
+      }
+
       return results;
     } catch (e) {
       print("Error parsing food detection results: " + e);
+      // Return to default state on error too
+      if (this.character) {
+        this.character.setState();
+      }
       throw e;
     }
   }
@@ -128,23 +144,23 @@ export class FoodDetector extends BaseScriptComponent {
 
     switch (quality) {
       case "healthy":
-        this.character.sayText("Yes, great choice!", 10.0);
-        this.character.setState(RabbitState.Green, 10.0);
+        this.character.sayText("Yes, great choice!", SELECT_DURATION);
+        this.character.setState(RabbitState.Green, SELECT_DURATION);
         break;
       case "unhealthy":
         this.character.sayText(
           "Whoops, this is not a great choice, try again",
-          10.0
+          SELECT_DURATION
         );
-        this.character.setState(RabbitState.Red, 10.0);
+        this.character.setState(RabbitState.Red, SELECT_DURATION);
         break;
       case "neutral":
       default:
         this.character.sayText(
           "This won't affect your calorie goal, feel free to have it or not.",
-          10.0
+          SELECT_DURATION
         );
-        this.character.setState(RabbitState.Orange, 10.0);
+        this.character.setState(RabbitState.Orange, SELECT_DURATION);
         break;
     }
 

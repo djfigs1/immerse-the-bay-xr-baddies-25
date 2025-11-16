@@ -334,8 +334,8 @@
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 5bf4103c-8cbb-4428-9699-c13ba3da41e8
-    - !<own> 1623b26e-5820-4dda-b0d2-f93bc769b909
     - !<own> f4f86322-122e-40e5-b219-8e2e87526249
+    - !<own> 1623b26e-5820-4dda-b0d2-f93bc769b909
   Components:
     - !<own> 65f4b044-0723-4b48-913d-d1fbe68b212b
 - !<SceneObject/11e322bc-9a86-4a33-88f2-6cba606af716>
@@ -892,18 +892,7 @@
     - !<own> ec48f310-602e-409d-b060-84101946297c
 - !<SceneObject/2ceda1e4-5880-48ba-9013-c3b0ba92067e>
   PrefabRemaps:
-    - 2ceda1e4-5880-48ba-9013-c3b0ba92067e: 0fa54832-2117-4d2d-66c0-d4e0b9aa9358
-    - 53b2ce45-7599-4800-a45d-e4a0f25fbb9d: dac7e079-4674-49a2-51dd-5b3c2538c381
-    - 619213d8-10b8-4b4c-8386-30454af410e8: 1b779e39-18f9-4464-5385-31091ddff405
-    - 8d3e9a4a-4800-45b4-bb5d-bbac8115c636: aad34ecc-40e1-4a5e-42ed-3b88797dba51
-    - 9a12dd02-ddf3-4012-8cc3-270b79b45792: 2ace4365-0afc-459e-54e2-cd71aeddef17
-    - 9b855fa7-d8c9-4335-ac51-9970d09ff4d4: d734a22f-be8f-4341-4f39-4c7f28cac3ef
-    - acf34121-e6d7-4a4c-a796-3370703c6275: 0e6957a9-373c-4053-5a25-a9121d9b5b3a
-    - bc50e39c-0b49-4dc6-8431-ecfc0b5298d7: d72b09ef-16b6-483d-619f-80ba365f68b2
-    - c2f93e21-642c-4493-ac81-d73b1dac6b64: d2dfd831-0988-4a84-7991-65df737847b7
-    - d9c909c7-d4fc-4e07-b7fa-3282e9815ac3: aec578d3-73dd-4b12-41ba-e8563ab37da2
-    - e4a79980-7ed1-465f-a890-70c5f3a8cac1: bcbaa3c4-0a47-4252-6a37-a8058047a1c1
-    - ea92e7ff-7680-4a0a-a8c7-51efd1b9db39: 955fb73d-bdea-487c-4d36-0e9ff6eb8613
+    []
   Name: Rabbit_green
   Enabled: false
   Layers: 1
@@ -1018,25 +1007,7 @@
     []
 - !<SceneObject/30988725-2508-4e03-b968-faebbc658f54>
   PrefabRemaps:
-    - 1426e9d1-0b8d-4d26-bbd5-c57863057bf5: 41ef67b8-2102-4a46-59ba-5619455d0564
-    - 1ef773c5-6244-46d3-ab88-e3246fa2fe51: 7f87bf5b-baf3-416b-537d-d6e8a8aa83bb
-    - 20716e5f-f6e1-4efc-846a-de282978e0fc: 14952eb1-96f9-4761-47e3-0ecf333ad8c1
-    - 258eed84-43d0-44b4-ab35-b91b94498fed: 8e2629e1-8c1a-4106-4ff9-903fed0050f1
-    - 2e36f091-7860-4e72-bcfa-41ce340733ed: 7588e8b2-809c-435d-66b3-1a951a99043d
-    - 30988725-2508-4e03-b968-faebbc658f54: 851a5a1d-bbdc-4fcc-56b2-7e4203737fba
-    - 405a138e-1840-473e-8862-32c30ecfe077: 7037e9d4-c4a1-4421-6e2c-405dcb2ad235
-    - 457a499b-8884-4113-8f49-a77dd4823cb3: 59f93cc0-c130-4c04-4f9c-3fba046e7788
-    - 586d0fd2-2d85-4907-980c-2f4ff8678bfd: f9a8f729-87b0-43b0-7654-3f340ba6b18d
-    - 5a7fe98c-24cb-43bd-a710-8ee678cecbee: 63136944-5d0c-4d0e-745a-bc52ce8b24e3
-    - 623156cc-7fac-4441-adc2-b8d4b200592a: c90fa4d6-2fe2-477a-6893-c498ff98a0ed
-    - 6ceef7b1-4807-40f8-9e1a-63d5f6b74195: ab8d535d-0ddf-47b5-5c61-dddd301f54d6
-    - 862cae43-11e8-4aa4-8c39-d978246da853: 4a1dc9fa-ac99-4985-777d-5477a7995264
-    - b450aa3f-ebb4-4ed5-b300-91feb749836f: 989f86be-6efb-4bc8-5bed-5c36da14b71c
-    - cf3be65b-8c3c-4d01-bd78-773e1e3beabc: 8bbb1d1e-ba3d-4eb9-46ab-0c1a6da1d1da
-    - d4bcc504-0d9c-41cf-9042-32e127de53f3: fdfc2a99-ec86-4840-62ff-6c2e0d925a98
-    - e55eb641-8e64-40ca-ab7a-fcbd9c3b4f50: 8cbb94f5-fffb-428b-5c1d-61c9e87bcec4
-    - ec7c1537-648b-4e83-98a3-8ed59e37fb9a: 506c7aeb-52cb-4ca3-45cd-1c58e0468bac
-    - f089d996-80b5-41b7-b343-4c81d90497e9: 7803cdfb-3a34-4dfa-5ca6-80183ee9e8ed
+    []
   Name: Rabbit_ears
   Enabled: false
   Layers: 1
@@ -1086,21 +1057,7 @@
     - !<own> 5b71f689-0ce3-46d4-992b-2dbc67c7ea4d
 - !<SceneObject/34ddee20-95e0-4739-a0ec-13ec30c7b687>
   PrefabRemaps:
-    - 0d8a30bc-c6d0-4ce7-b8ea-ab8305a24a8d: 4fd0b519-8e4c-4660-62cb-a33748722497
-    - 15fc3887-ebd3-47af-a106-f23f8f1e6172: 7455bb5c-3376-4744-7fcd-1832a8fbdfba
-    - 1f9122d5-f2a9-44ec-9466-e6955b5d7e0e: ff9a5d9f-587d-41ae-4df1-ad426e420ff8
-    - 33e66371-d3f8-426d-b193-55dbc10d82ea: 683e9cf0-f549-47a1-4216-d17ff38b8884
-    - 34ddee20-95e0-4739-a0ec-13ec30c7b687: b708f140-1ed2-40f5-6cc9-a32b573cfe4e
-    - 3bb79c33-4929-41ea-bd9e-78c9a7946ecd: 911cf493-34ed-4501-6555-6ea54067da00
-    - 46e86bcf-d13b-4c2d-8b33-2a705c2b3f26: 4ac06de7-31df-4d53-6526-1c91300bc92e
-    - 4d086005-cd48-4d7f-bb34-eff1e3ed755e: 8e5b52df-6916-41ea-4c4a-502de2ae6ed2
-    - 538492ec-a35e-4eb6-951d-735368f67315: 7da48141-8e53-45e3-6020-226dd02db054
-    - 6a6474a6-24b4-41f5-b4af-470f3c730c7b: ee23f3bf-29ec-4359-4bc2-571b05d113b7
-    - 7477ddcf-37a4-4e56-a5d9-1705b62218ee: 07794717-9105-41ae-5d14-94f02ac46f95
-    - 7d033c98-4858-445f-874f-581cabcd2fab: da9294f1-38a9-4b30-7e80-71b4375e5900
-    - c6eff728-9b1d-4097-ac2f-e04d5214be86: 0264af45-7a23-4900-540a-a3577ae091e2
-    - f32a67e9-719b-4038-b797-01ec1ccb1432: f745f2da-2f03-4d19-5941-d42b7c747705
-    - fe33351f-34fb-44e9-8479-da2f9dc6c22e: db1bf302-f963-4a18-50b7-63783eed0846
+    []
   Name: rabbit_rotating
   Enabled: false
   Layers: 1
@@ -1115,18 +1072,7 @@
     []
 - !<SceneObject/359ae503-6ca7-481e-b0a6-10760e751480>
   PrefabRemaps:
-    - 06ca4c95-d426-4b60-9c66-625d486070e4: 4949293c-316a-48ae-4e89-884cbe3caeb6
-    - 19d7ae3f-9d7d-4abe-a2a6-88b57306809d: feb32b12-44c0-4fe4-5572-ca152042545e
-    - 1a38fa50-e56f-4b84-a0ce-b57d1dd5907d: 9dc30389-c1eb-4965-44ef-7e45ea5c63f2
-    - 308b3319-e14c-4074-ae5f-8f74929c4793: 1d2187aa-86cf-4ee9-6bb1-0aca216a3dd1
-    - 359ae503-6ca7-481e-b0a6-10760e751480: c81611bb-0ac5-4938-4c8f-003a1bf3fcaf
-    - 38b1d4fa-61c0-44ad-90a2-747e9ef12241: 343ca64b-3a3f-4d58-6e02-80e491d77744
-    - 56d3c804-1063-4423-b0f6-26327b142a82: 51bf2c1d-d853-4713-61a9-9c11822119b3
-    - 6fd2a8a7-e9a0-4555-9ed2-cf1b25e0e9e8: db209788-1ac8-41db-5e60-aea2688a5aa9
-    - 85c84bbe-c950-4133-b8ef-658df424956e: 338fc0fe-d119-42cd-48f5-2e1cf6e4c292
-    - e3ce264f-4d02-4026-9513-302bc8246353: 298f4125-8ccc-4965-7fac-8b403cd9f898
-    - e7361b5a-e0a7-41e9-8cee-794ac1196723: d8cadd93-8d12-424f-42cd-6311bb0535ac
-    - ecb3e2fd-1552-4a10-a8a4-7a1def2bbd0c: bd507773-f5c8-48a0-4b48-2fcb9c85069d
+    []
   Name: Rabbit_orange
   Enabled: false
   Layers: 1
@@ -1303,7 +1249,8 @@
     "":
       geminiClient: !<MappingBased.AssignableType> 54e2ae2b-ae16-4806-8fb7-1f0a03981372
       depthCache: !<MappingBased.AssignableType_1> 51cfd1aa-e277-4a87-9ce8-ecc62396c081
-      marker3D: !<reference.ObjectPrefab> ff538782-f6d0-40db-a78c-abac7bfd3d62
+      marker3D: !<reference.ObjectPrefab> a9558124-3049-4a93-a3ad-7f32772391e4
+      character: !<MappingBased.AssignableType_2> 604aa8e6-1c97-431a-9f05-7783b560219d
       imagePrompt: |
         You are a vision model. Analyze the image and return ONLY valid JSON.
         
@@ -4667,18 +4614,7 @@
     []
 - !<SceneObject/de292e46-5cfe-412e-9e87-8f86ee454d6a>
   PrefabRemaps:
-    - 13ce8a4b-5311-41c4-9e67-0432ee321d37: 78fa7408-6e07-4fe2-74ed-081fe07d170d
-    - 3d342382-0384-4f8f-9e1e-7c8fa8c11fee: acf891c4-5f62-464c-4a2d-3b808cc89f78
-    - 4522f216-79a6-4178-8d3e-1a2aeccaa869: 9ac4d975-72fe-446c-6e35-33cb77e7b11b
-    - 748015ae-61fa-4ee3-b338-4a54ed69cca8: 0519a88b-7240-4d51-79ca-d7c10225ae5b
-    - 967d74b6-f261-433c-abf4-33bbf0b58a21: 7f95e860-c61f-49e2-752b-1fbeb2c2e775
-    - 9e088c1b-6bbc-483f-bf85-c7104cf3ed6f: 3a519a78-a097-48c8-49bc-c3a180601eb6
-    - ade5357d-8a80-40ed-9f62-f7b7399475a0: 520c2369-8011-445e-46ba-3b66f0cb5698
-    - b2bd8b18-de8a-4422-83e5-f75f0f7f11be: 7150fa80-c138-4b95-648a-bbf11881b5b9
-    - b33346a5-6a3a-4450-94ce-5d407150d2b6: 9e386566-0722-4781-6538-ac1ed81f5779
-    - de292e46-5cfe-412e-9e87-8f86ee454d6a: e5e4a65c-bb8f-4235-47d9-bf40de765964
-    - de2c2826-3230-4321-873f-10df808e4880: 8261b930-8731-4fd8-6fa6-1e49adf73305
-    - e2f4eb14-26c5-4bbe-a0a4-fcc686cf6907: d62ee240-4968-4087-6a82-1bde3d0af7bb
+    []
   Name: Rabbit_red
   Enabled: false
   Layers: 1
@@ -4833,23 +4769,9 @@
     []
 - !<SceneObject/e48c8985-720d-4c0c-aaa0-ad244bdd22cf>
   PrefabRemaps:
-    - 1b21de8a-1377-43a5-834d-b18b41e33a04: f701b5d4-ce38-4aae-63b2-a7b62f740f89
-    - 1fa6cea0-b282-483d-a00a-99325089f3c1: 0db14f7e-70dd-420f-5f9c-b0b9a8c00d85
-    - 4b6cc33a-c585-4b05-b145-829c51366035: c108bc7c-7974-4f5c-50f1-620364c50d4a
-    - 55ac7b66-cb6f-490e-9492-196ad9b51608: b86ee254-60a9-48a1-489b-9ff6423d2a8b
-    - 5a5d9e8c-ca0c-4bd3-85e6-796bb79cdec4: 77066866-faa3-4d72-42c7-c2b553dfc85d
-    - 70dbe241-3185-4d50-89b9-0310ccbba0d6: 7305fba8-e69e-4928-46b8-f229cd2e5e4c
-    - 771798b6-3dd6-4b9b-abe8-61ca95bb9c7d: ceeeda6c-1456-4b18-6c3f-68d00262397d
-    - 7e6b2331-c684-46f4-99cf-ece32eed5ab4: 072d013d-644d-49c2-7b5e-2da316681295
-    - 8fdfd821-e1ed-4ee8-9dec-f831b07e6756: 49ba6ff8-e0c8-414b-69da-616aea428335
-    - a02a3b47-4c78-4102-8c9c-2979dd4bc4d8: 12fc91b3-69bc-49cc-522c-73bed6735376
-    - a3f0e810-b48a-43df-b0f5-40c4a4ce2e39: 35f6d94e-9ef3-4183-5311-2163c7eba31c
-    - aab22380-103c-49c4-b74f-1f1a633492d6: 923f5a0b-c452-44fb-6f7e-4117d7303e38
-    - ad30c188-68e9-43f6-9ecc-a19a5753e5e7: 81b0e780-997a-4464-6e41-193ca5f5f495
-    - b7a3a5ef-8e29-4d12-8149-983f88606867: 0d43bdde-6a0c-4d1d-7ef3-09e08ce2792b
-    - e48c8985-720d-4c0c-aaa0-ad244bdd22cf: 5a84b453-2bda-477e-7877-b3b511bb25ac
+    []
   Name: tailWag_Rabbit
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
