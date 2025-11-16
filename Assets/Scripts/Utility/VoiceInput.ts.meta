@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/26c807f0-29d9-4139-bf5b-35e2f54420ef>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 66e7dc4b-6554-46cf-b946-b5848b24a723
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 66e7dc4b-6554-46cf-b946-b5848b24a723
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> bf463660-a84b-4294-a723-44a15be0f4db
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/bf463660-a84b-4294-a723-44a15be0f4db>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2d166807-b0c0-40d8-8628-0c5a2d0b6ff5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    voiceInterface: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - voiceInterface: !<reference.VoiceMLModule> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.VoiceMLModule voiceInterface

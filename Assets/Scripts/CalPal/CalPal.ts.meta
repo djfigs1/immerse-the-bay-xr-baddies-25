@@ -28,6 +28,7 @@
   ScriptInputsHidden:
     depthCache: false
     foodDetector: false
+    healthGoals: false
     marker3D: false
   ScriptTypesHidden:
     {}
@@ -40,6 +41,7 @@
   DefaultScriptInputs:
     - foodDetector: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       depthCache: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      healthGoals: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
       marker3D: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
@@ -47,4 +49,5 @@
   InputLines:
     - // @input AssignableType foodDetector
     - // @input AssignableType_1 depthCache
+    - // @input AssignableType_2 healthGoals
     - // @input Asset.ObjectPrefab marker3D

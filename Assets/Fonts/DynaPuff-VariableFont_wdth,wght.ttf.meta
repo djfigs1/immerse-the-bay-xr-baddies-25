@@ -1,8 +1,8 @@
-- !<AssetImportMetadata/141ba931-8d20-43fb-8bc1-1d862150242f>
+- !<AssetImportMetadata/47931960-018b-441d-9066-f4feacdf184b>
   ImportedAssetIds:
-    ShaderGraph: !<reference> 141863f9-4671-42fb-9993-8f2db89ab04d
-  ImporterName: ShaderGraphPassImporter
-  PrimaryAsset: !<reference> 141863f9-4671-42fb-9993-8f2db89ab04d
+    Font: !<reference> 95bad12e-2c16-46df-bb9d-9b9fe801590e
+  ImporterName: FontImporter
+  PrimaryAsset: !<reference> 95bad12e-2c16-46df-bb9d-9b9fe801590e
   PackageType: NotAPackage
   LegacyPackagePolicy: ~
   ExtraData:

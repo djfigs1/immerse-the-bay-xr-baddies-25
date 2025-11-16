@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/4b27e992-fbf4-467b-930f-29eedc82c3ae>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b3c9b094-0048-46fc-96bb-03d0c2249c58
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b3c9b094-0048-46fc-96bb-03d0c2249c58
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7d031f85-9502-4753-bbef-239563fbb72b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7d031f85-9502-4753-bbef-239563fbb72b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 546af6c4-3aa1-49fc-b4a0-153464ad0aaf
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    textComponent: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - textComponent: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Text textComponent {"hint":"Text component to display messages"}'

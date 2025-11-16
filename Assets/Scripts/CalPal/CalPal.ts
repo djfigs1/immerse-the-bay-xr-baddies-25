@@ -3,6 +3,7 @@ import { FoodDetectionResult } from "../Detection/DetectionResult";
 import { FoodDetector } from "../Detection/FoodDetector";
 import { delay } from "Scripts/Utility/util";
 import { Marker } from "Scripts/UI/Marker";
+import { HealthGoals } from "Scripts/HealthGoal/HealthGoals";
 
 @component
 export class CalPal extends BaseScriptComponent {
@@ -10,6 +11,8 @@ export class CalPal extends BaseScriptComponent {
   private foodDetector: FoodDetector;
   @input
   private depthCache: DepthCache;
+  @input
+  private healthGoals: HealthGoals;
 
   @input
   private marker3D: ObjectPrefab;
@@ -19,8 +22,20 @@ export class CalPal extends BaseScriptComponent {
     this.createEvent("OnStartEvent").bind(this.onStart.bind(this));
   }
 
-  private onStart() {
+  private async onStart() {
+    await delay(this, 2); // Wait a few seconds before starting
     this.detectFoodOnStartup();
+  }
+
+  private async doCalorieWorkflow() {
+    const goal = await this.getCalorieGoal();
+    print(`User's daily calorie goal: ${goal}`);
+  }
+
+  private async getCalorieGoal() {
+    const goal = await this.healthGoals.dictateGoal();
+    this.healthGoals.showCalorieConfirmation(goal.goal!);
+    return goal.goal!;
   }
 
   /**
@@ -55,7 +70,7 @@ export class CalPal extends BaseScriptComponent {
         const height = tex.getHeight();
 
         const worldPos = this.depthCache.getWorldPositionWithID(
-          new vec2(result.center[0] * width, (1 - result.center[1]) * height),
+          new vec2(result.center[0] * width, result.center[1] * height),
           depthId
         );
 

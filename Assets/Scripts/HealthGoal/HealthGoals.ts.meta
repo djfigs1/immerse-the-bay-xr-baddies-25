@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/1cb0fa09-ab61-4454-beaa-0135c715c0c3>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 5bc69e5c-aad7-4973-9491-010e8d53ac2e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 5bc69e5c-aad7-4973-9491-010e8d53ac2e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 92d571c5-1ebe-464b-ae7e-48b756a6018b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/92d571c5-1ebe-464b-ae7e-48b756a6018b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 78dec690-d099-44e1-b7b2-599c57e82f30
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    display: false
+    geminiClient: false
+    prompt: false
+    voiceInput: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - geminiClient: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      voiceInput: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      display: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      prompt: ""
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType geminiClient
+    - '// @input AssignableType_1 voiceInput {"hint":"VoiceInput component for speech-to-text transcription"}'
+    - '// @input AssignableType_2 display {"hint":"HealthGoalsDisplay component for showing clarifying questions"}'
+    - '// @input string prompt {"hint":"The prompt to send to Gemini for calorie goal generation", "widget":"text_area"}'

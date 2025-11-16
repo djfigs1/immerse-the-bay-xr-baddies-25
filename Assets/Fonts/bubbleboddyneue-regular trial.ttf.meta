@@ -1,8 +1,8 @@
-- !<AssetImportMetadata/c5bb1190-165f-4f73-b5db-a69d09c36398>
+- !<AssetImportMetadata/8199961c-5ca0-42d5-b49f-e18cb7fb1238>
   ImportedAssetIds:
-    Material: !<reference> 39b649b4-bce1-47a8-9e10-b8909bc11817
-  ImporterName: MaterialImporter
-  PrimaryAsset: !<reference> 39b649b4-bce1-47a8-9e10-b8909bc11817
+    Font: !<reference> 6506f086-e608-4637-894c-62fdecaf7fac
+  ImporterName: FontImporter
+  PrimaryAsset: !<reference> 6506f086-e608-4637-894c-62fdecaf7fac
   PackageType: NotAPackage
   LegacyPackagePolicy: ~
   ExtraData:

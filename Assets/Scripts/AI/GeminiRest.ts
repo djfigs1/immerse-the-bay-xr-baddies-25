@@ -74,7 +74,7 @@ export class GeminiRestClient extends BaseScriptComponent {
       }
     );
 
-    const response = await this.remoteServiceModule.fetch(webRequest);
+    const response = await this.internetModule.fetch(webRequest);
 
     if (response.status === 200) {
       const bodyText = await response.text();
@@ -84,7 +84,10 @@ export class GeminiRestClient extends BaseScriptComponent {
         bodyJson.candidates?.[0]?.content?.parts?.[0]?.text &&
         bodyJson.candidates[0].content.parts[0].text.length > 0
       ) {
-        return bodyJson.candidates[0].content.parts[0].text;
+        return bodyJson.candidates[0].content.parts[0].text.replaceAll(
+          "\\",
+          ""
+        );
       } else {
         throw new Error("No text in response");
       }
