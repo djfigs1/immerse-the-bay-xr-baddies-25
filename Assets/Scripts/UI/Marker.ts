@@ -58,13 +58,24 @@ export class Marker extends BaseScriptComponent {
   /**
    * Show the marker with the detection result information
    * @param result The food detection result to display
+   * @param dailyCalorieGoal Optional daily calorie goal to calculate percentage. If not provided, percentage is not shown.
    */
-  show(result: FoodDetectionResult): void {
+  show(result: FoodDetectionResult, dailyCalorieGoal?: number): void {
     this.currentResult = result;
 
     // Set the text field with the food name
     if (this.text3d) {
-      this.text3d.text = result.name + "\n" + result.calories + " cal";
+      let calorieText = result.calories + " cal";
+
+      // Add percentage if daily goal is provided
+      if (dailyCalorieGoal !== undefined && dailyCalorieGoal > 0) {
+        const percentage = Math.round(
+          (result.calories / dailyCalorieGoal) * 100
+        );
+        calorieText += ` (${percentage}%)`;
+      }
+
+      this.text3d.text = result.name + "\n" + calorieText;
     } else {
       print("Warning: Text field not assigned to marker");
     }

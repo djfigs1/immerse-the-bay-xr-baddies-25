@@ -1,7 +1,7 @@
 import { GeminiRestClient } from "../AI/GeminiRest";
 import { VoiceInput } from "../Utility/VoiceInput";
 import { HealthGoalResult } from "./HealthGoalResult";
-import { Character } from "../Character/Character";
+import { Character, RabbitState } from "../Character/Character";
 
 @component
 export class HealthGoals extends BaseScriptComponent {
@@ -33,6 +33,11 @@ export class HealthGoals extends BaseScriptComponent {
 
     print("Requesting calorie goal from Gemini...");
 
+    // Set character to thinking state
+    if (this.character) {
+      this.character.setState(RabbitState.Ears);
+    }
+
     // Combine the prompt with user input
     const fullPrompt = this.prompt + userInput;
 
@@ -54,9 +59,21 @@ export class HealthGoals extends BaseScriptComponent {
       const goal = this.validateHealthGoal(data);
 
       print(`Goal generated: ${goal.goal} calories`);
+
+      // Return character to default state
+      if (this.character) {
+        this.character.setState();
+      }
+
       return goal;
     } catch (e) {
       print("Error parsing calorie goal: " + e);
+
+      // Return character to default state on error
+      if (this.character) {
+        this.character.setState();
+      }
+
       throw e;
     }
   }
@@ -171,7 +188,6 @@ export class HealthGoals extends BaseScriptComponent {
           print(`Final transcription: ${args.speech}`);
 
           // Stop listening and remove handler
-          this.voiceInput.stopListening();
           this.voiceInput.removeInputHandler(handler);
 
           // Call the optional callback
@@ -221,7 +237,6 @@ export class HealthGoals extends BaseScriptComponent {
 
       // Add handler and start listening
       this.voiceInput.addInputHandler(handler);
-      this.voiceInput.startListening();
     });
   }
 }

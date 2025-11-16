@@ -1,18 +1,20 @@
-import { DepthCache } from "Scripts/Detection/DepthCache";
+import { TriggerCommand } from "Scripts/Detection/TriggerCommand";
+import { HealthGoals } from "Scripts/HealthGoal/HealthGoals";
+import { delay } from "Scripts/Utility/util";
 import { FoodDetectionResult } from "../Detection/DetectionResult";
 import { FoodDetector } from "../Detection/FoodDetector";
-import { delay } from "Scripts/Utility/util";
-import { Marker } from "Scripts/UI/Marker";
-import { HealthGoals } from "Scripts/HealthGoal/HealthGoals";
 
 @component
 export class CalPal extends BaseScriptComponent {
   @input
   private foodDetector: FoodDetector;
   @input
-  private depthCache: DepthCache;
-  @input
   private healthGoals: HealthGoals;
+  @input
+  private scanTrigger: TriggerCommand;
+
+  private calorieGoal: number | undefined;
+  private scanCallback: (() => void) | null = null;
 
   onAwake() {
     print("CalPal initialized");
@@ -20,39 +22,35 @@ export class CalPal extends BaseScriptComponent {
   }
 
   private async onStart() {
-    await delay(this, 2); // Wait a few seconds before starting
-    this.detectFoodOnStartup();
+    await delay(this, 1);
+    this.doCalorieWorkflow(); // Wait a few seconds before starting
   }
 
   private async doCalorieWorkflow() {
     const goal = await this.getCalorieGoal();
     print(`User's daily calorie goal: ${goal}`);
+    await this.detectFood(goal);
   }
 
   private async getCalorieGoal() {
     const goal = await this.healthGoals.dictateGoal();
-    this.healthGoals.showCalorieConfirmation(goal.goal!);
+    await this.healthGoals.showCalorieConfirmation(goal.goal!);
     return goal.goal!;
   }
 
   /**
    * Detect food items on startup and print the results
    */
-  private async detectFoodOnStartup(): Promise<void> {
+  private async detectFood(calorieGoal?: number): Promise<void> {
     if (!this.foodDetector) {
       print("Error: FoodDetector not assigned");
       return;
     }
 
     try {
-      await delay(this, 3);
       print("Starting food detection...");
 
-      // Capture the camera texture
-      const depthId = this.depthCache.saveDepthFrame();
-      const tex = this.depthCache.getCamImageWithID(depthId);
-
-      const results = await this.foodDetector.detect(tex);
+      const results = await this.foodDetector.detect(calorieGoal);
 
       print(`Detected ${results.length} food items:`);
 
@@ -63,9 +61,6 @@ export class CalPal extends BaseScriptComponent {
         print(`Calories: ${result.calories}`);
         print(`Quality: ${result.quality}`);
       });
-
-      // Place 3D markers at detected food locations
-      this.foodDetector.placeMarkers(results, tex, depthId);
     } catch (error) {
       print("Food detection failed: " + error);
     }

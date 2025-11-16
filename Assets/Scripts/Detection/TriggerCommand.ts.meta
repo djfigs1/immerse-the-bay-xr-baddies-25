@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/a0c42bce-f0d9-4268-9e09-0d183f63a080>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6811dd5e-c089-4bfe-b4fe-05ef97c788b0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6811dd5e-c089-4bfe-b4fe-05ef97c788b0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6f529b6a-31e7-45dd-b418-4ba8b914ced5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6f529b6a-31e7-45dd-b418-4ba8b914ced5>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 1269a8d7-8ada-4c31-aea9-e9f23fa7e681
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    triggerWord: false
+    voiceInput: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - voiceInput: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      triggerWord: scan
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType voiceInput {"hint":"VoiceInput component for speech recognition"}'
+    - "// @input string triggerWord = \"scan\" {\"hint\":\"Trigger word to listen for (e.g., 'scan', 'detect')\"}"

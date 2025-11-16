@@ -24,19 +24,57 @@ export class FoodDetector extends BaseScriptComponent {
   private character: Character;
 
   @input
+  @hint("Audio component to play when detection starts")
+  private audioComponent: AudioComponent;
+
+  @input
   @widget(new TextAreaWidget())
   @hint("The prompt to send with the camera image")
   public imagePrompt: string =
     "What food items can you see in this image? Provide nutritional information.";
+
+  private placedMarkers: SceneObject[] = [];
 
   onAwake() {
     print("CalPal initialized");
   }
 
   /**
+   * Save the current depth frame and return its ID
+   * @returns The depth frame ID
+   */
+  public saveDepthFrame(): number {
+    if (!this.depthCache) {
+      throw new Error("DepthCache not assigned");
+    }
+    return this.depthCache.saveDepthFrame();
+  }
+
+  /**
+   * Get the camera image associated with a depth frame ID
+   * @param depthId The depth frame ID
+   * @returns The camera texture
+   */
+  public getCamImageWithID(depthId: number): Texture {
+    if (!this.depthCache) {
+      throw new Error("DepthCache not assigned");
+    }
+    return this.depthCache.getCamImageWithID(depthId);
+  }
+
+  /**
    * Detect food items in the current camera view
    */
-  async detect(tex: Texture): Promise<FoodDetectionResult[]> {
+  async detect(calorieGoal?: number): Promise<FoodDetectionResult[]> {
+    // Save depth frame and get camera image
+    const depthId = this.saveDepthFrame();
+    const tex = this.getCamImageWithID(depthId);
+
+    // Play audio if component is assigned
+    if (this.audioComponent) {
+      this.audioComponent.play(1);
+    }
+
     // Set character to thinking state
     if (this.character) {
       this.character.setState(RabbitState.Ears);
@@ -64,6 +102,9 @@ export class FoodDetector extends BaseScriptComponent {
       console.log("JSON Text: " + jsonText);
       const data = JSON.parse(jsonText);
       const results = this.validateFoodDetectionResults(data);
+
+      // Place 3D markers at detected food locations
+      this.placeMarkers(results, tex, depthId, calorieGoal);
 
       // Return to default state after detection completes
       if (this.character) {
@@ -172,11 +213,13 @@ export class FoodDetector extends BaseScriptComponent {
    * @param results The food detection results
    * @param tex The texture that was used for detection
    * @param depthId The depth frame ID from the depth cache
+   * @param dailyCalorieGoal Optional daily calorie goal to show percentage on markers
    */
   public placeMarkers(
     results: FoodDetectionResult[],
     tex: Texture,
-    depthId: number
+    depthId: number,
+    dailyCalorieGoal?: number
   ): void {
     if (!this.depthCache) {
       print("Warning: DepthCache not assigned, cannot place markers");
@@ -187,6 +230,14 @@ export class FoodDetector extends BaseScriptComponent {
       print("Warning: marker3D prefab not assigned, cannot place markers");
       return;
     }
+
+    // Destroy all previously placed markers
+    this.placedMarkers.forEach((markerObj) => {
+      if (markerObj) {
+        markerObj.destroy();
+      }
+    });
+    this.placedMarkers = [];
 
     const width = tex.getWidth();
     const height = tex.getHeight();
@@ -203,11 +254,14 @@ export class FoodDetector extends BaseScriptComponent {
         // Instantiate the marker prefab at the world position
         const markerObj = this.marker3D.instantiate(null);
         const marker = markerObj.getComponent(Marker.getTypeName()) as Marker;
-        marker.show(result);
+        marker.show(result, dailyCalorieGoal);
         // Set up the selection callback
         marker.setOnSelectedCallback(this.onMarkerSelected.bind(this));
 
         markerObj.getTransform().setWorldPosition(worldPos);
+
+        // Add to tracking array
+        this.placedMarkers.push(markerObj);
 
         print(
           `Instantiated marker for ${

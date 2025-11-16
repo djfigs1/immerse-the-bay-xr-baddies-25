@@ -25,8 +25,8 @@ export class VoiceInput extends BaseScriptComponent {
 
   async onStart() {
     this.voiceInterface.onListeningEnabled.add(() => {
-      print("Voice Input Enabled");
       this.startListening();
+      print("Voice Input Enabled");
     });
 
     this.voiceInterface.onListeningUpdate.add(
