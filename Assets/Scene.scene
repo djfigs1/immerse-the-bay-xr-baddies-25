@@ -352,13 +352,16 @@
   Enabled: true
   ScriptAsset: !<reference> 3b42af09-205c-416b-8451-cf5af007067f
   ScriptInputsDefault:
-    {}
+    cameraService: true
+    displayMaterial: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       foodDetector: !<MappingBased.AssignableType> 3f92fe8f-797a-49d3-a58c-80d666df5900
       detectionSquares: !<MappingBased.AssignableType_1> 04b0b6a8-c028-4136-9369-123e4d631dba
+      cameraService: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      displayMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     "":
       {}
