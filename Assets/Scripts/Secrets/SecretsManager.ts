@@ -2,6 +2,9 @@ import { RemoteServiceGatewayCredentials } from "RemoteServiceGateway.lspkg/Remo
 
 export type SecretsConfig = {
   gemini?: string;
+  openAi?: string;
+  snap?: string;
+  geminiKey?: string;
 };
 
 @component
@@ -63,6 +66,8 @@ export class SecretsManager extends BaseScriptComponent {
     if (config) {
       print("Secrets loaded in component:");
       print("  - Gemini API Key: " + (config.gemini ? "✓ Set" : "✗ Not set"));
+      print("  - OpenAI API Key: " + (config.openAi ? "✓ Set" : "✗ Not set"));
+      print("  - Snap Token: " + (config.snap ? "✓ Set" : "✗ Not set"));
     }
   }
 }

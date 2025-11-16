@@ -2,7 +2,7 @@ import {
   Gemini,
   GeminiLiveWebsocket,
 } from "RemoteServiceGateway.lspkg/HostedExternal/Gemini";
-import { GeminiTypes } from "RemoteServiceGateway.lspkg/HostedExternal/GeminiTypes";
+import type { GeminiTypes } from "RemoteServiceGateway.lspkg/HostedExternal/GeminiTypes";
 
 type QueuedRequest = {
   type: "text" | "image";
@@ -25,7 +25,7 @@ export class GeminiClient extends BaseScriptComponent {
   private maxQueueSize: number = 5;
 
   private geminiLive: GeminiLiveWebsocket;
-  ins;
+
   // Message queue
   private requestQueue: QueuedRequest[] = [];
   private isProcessing: boolean = false;
@@ -42,8 +42,7 @@ export class GeminiClient extends BaseScriptComponent {
   private nextResponseId: number = 0;
 
   onAwake() {
-    // Create the session
-    this.createSession();
+    this.createEvent("OnStartEvent").bind(this.createSession.bind(this));
   }
 
   /**
@@ -64,12 +63,12 @@ export class GeminiClient extends BaseScriptComponent {
         const status = args.isInternetAvailable ? "Reconnected" : "No internet";
         print("Internet status changed: " + status);
       });
+
+      // Create websocket connection
+      this.geminiLive = Gemini.liveConnect();
+
+      this.setupEventHandlers();
     }
-
-    // Create websocket connection
-    //this.geminiLive = Gemini.liveConnect();
-
-    //this.setupEventHandlers();
   }
 
   /**

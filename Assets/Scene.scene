@@ -3,7 +3,6 @@
   objects:
     - !<own> 00000000-0000-0065-0000-000000000064
     - !<own> 8f07ee4d-fe77-492c-bb0a-1547231d0ef0
-    - !<own> 0005641c-028d-459a-0000-000000014b4d
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -24,7 +23,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> 6894203f-d7be-4706-9ad9-5ee4196f454e
   Components:
     - !<own> 00000000-0000-0065-0000-000000000065
 - !<Camera/00000000-0000-0065-0000-000000000065>
@@ -58,118 +57,6 @@
   MaskTexture: !<reference> 00000000-0000-0000-0000-000000000000
   RayTracing: !<reference> 00000000-0000-0000-0000-000000000000
   DevicePropertiesSource: !<reference> 00000000-0000-0000-0000-000000000000
-- !<SceneObject/0005641c-028d-459a-0000-000000014b4d>
-  PrefabRemaps:
-    []
-  Name: Lighting
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    - !<own> 00056e79-b066-62ca-0000-000000001406
-    - !<own> 0005641c-028d-4630-0000-000000014b56
-  Components:
-    []
-- !<SceneObject/0005641c-028d-4630-0000-000000014b56>
-  PrefabRemaps:
-    []
-  Name: Light
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 40.000000, y: 85.000000, z: 20.000000}
-    Rotation: {x: 70.000000, y: 10.000000, z: 150.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 0005641c-028d-463e-0000-000000014b59
-- !<LightSource/0005641c-028d-463e-0000-000000014b59>
-  PrefabRemaps:
-    []
-  Name: Light Source
-  Enabled: true
-  renderLayer: 1835007
-  LightType: Directional
-  Intensity: 1.000000
-  CastShadows: false
-  ShadowDensity: 0.440000
-  ShadowBlurRadius: 4.000000
-  ShadowTextureSize: 512
-  AutoLightSourcePosition: true
-  AutoShadowFrustumSize: true
-  AutoShadowFrustumSizeExtend: 2.000000
-  ShadowFrustumSize: 30.000000
-  ShadowFrustumNearClipPlane: 1.000000
-  ShadowFrustumFarClipPlane: 1000.000000
-  UseEnvMapFromCamera: false
-  EnvMapFromCameraMode: Auto
-  EstimationSharpness: 1.000000
-  EnvMapExposure: 1.000000
-  EnvMapRotation: 0.000000
-  DiffuseEnvTexture: !<reference> 00000000-0000-0000-0000-000000000000
-  SpecularEnvTexture: !<reference> 00000000-0000-0000-0000-000000000000
-  Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-  DynamicEnvInputTexture: !<reference> 00000000-0000-0000-0000-000000000000
-  InnerConeAngle: 0.000000
-  OuterConeAngle: 45.000000
-  DecayType: None
-  DecayLimit: false
-  DecayRange: 40.000000
-- !<SceneObject/00056e79-b066-62ca-0000-000000001406>
-  PrefabRemaps:
-    []
-  Name: Envmap
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 65.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 00056e79-b066-62f1-0000-000000001409
-- !<LightSource/00056e79-b066-62f1-0000-000000001409>
-  PrefabRemaps:
-    []
-  Name: Light Source
-  Enabled: true
-  renderLayer: 1835007
-  LightType: EnvMap
-  Intensity: 1.000000
-  CastShadows: false
-  ShadowDensity: 1.000000
-  ShadowBlurRadius: 0.000000
-  ShadowTextureSize: 512
-  AutoLightSourcePosition: false
-  AutoShadowFrustumSize: false
-  AutoShadowFrustumSizeExtend: 2.000000
-  ShadowFrustumSize: 30.000000
-  ShadowFrustumNearClipPlane: 1.000000
-  ShadowFrustumFarClipPlane: 1000.000000
-  UseEnvMapFromCamera: false
-  EnvMapFromCameraMode: Auto
-  EstimationSharpness: 1.000000
-  EnvMapExposure: 1.000000
-  EnvMapRotation: 0.000000
-  DiffuseEnvTexture: !<reference> 2013a19b-93c1-4f21-b7ea-876a33550c7b
-  SpecularEnvTexture: !<reference> d795fd46-e16b-4cb9-8dfb-4ef227298f7a
-  Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-  DynamicEnvInputTexture: !<reference> 00000000-0000-0000-0000-000000000000
-  InnerConeAngle: 0.000000
-  OuterConeAngle: 45.000000
-  DecayType: None
-  DecayLimit: false
-  DecayRange: 40.000000
 - !<ScriptComponent/0ac1cea1-7ae3-4a54-9b35-66ada7771cc0>
   PrefabRemaps:
     []
@@ -182,7 +69,7 @@
     {}
   ScriptInputs:
     "":
-      remoteServiceCredentials: !<MappingBased.AssignableType> a4fbc6c6-049d-414d-9f35-c4c95fbd2b39
+      remoteServiceCredentials: !<MappingBased.AssignableType> edb33f45-fd5a-4b96-84f8-31369cb91527
   ScriptTypes:
     "":
       {}
@@ -231,7 +118,7 @@
     []
   Components:
     - !<own> 0ac1cea1-7ae3-4a54-9b35-66ada7771cc0
-    - !<own> a4fbc6c6-049d-414d-9f35-c4c95fbd2b39
+    - !<own> edb33f45-fd5a-4b96-84f8-31369cb91527
 - !<SceneObject/204c77bf-7720-4acd-b801-3cf337e4d2dc>
   PrefabRemaps:
     []
@@ -247,23 +134,6 @@
     []
   Components:
     - !<own> f54ae76c-931e-4a6f-bb14-f2fcfe412471
-- !<ScriptComponent/340a12dc-01cd-4de4-978d-5fb096d10826>
-  PrefabRemaps:
-    []
-  Name: Gemini
-  Enabled: true
-  ScriptAsset: !<reference> c039cf6f-408f-4bcd-ad30-cd4b7df1f1c7
-  ScriptInputsDefault:
-    maxQueueSize: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      websocketRequirementsObj: !<reference.SceneObject> 1f1f13a6-cf58-4ad2-98ad-10231a1d0cd8
-      maxQueueSize: !<float> 5.000000
-  ScriptTypes:
-    "":
-      {}
 - !<ScriptComponent/3f92fe8f-797a-49d3-a58c-80d666df5900>
   PrefabRemaps:
     []
@@ -277,7 +147,7 @@
   ScriptInputs:
     "":
       cameraService: !<MappingBased.AssignableType> f54ae76c-931e-4a6f-bb14-f2fcfe412471
-      geminiClient: !<MappingBased.AssignableType_1> 340a12dc-01cd-4de4-978d-5fb096d10826
+      geminiClient: !<MappingBased.AssignableType_1> 54e2ae2b-ae16-4806-8fb7-1f0a03981372
       imagePrompt: |
         You are a vision model. Analyze the image and return ONLY valid JSON.
         
@@ -300,7 +170,7 @@
               "name": "Chocolate Cookie", 
               "center": [0.5,0.5],
               "calories": 123,
-        "healthy": "unhealthy"
+              "quality": "unhealthy"
             \} 
           ] 
         \}
@@ -308,6 +178,51 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/54e2ae2b-ae16-4806-8fb7-1f0a03981372>
+  PrefabRemaps:
+    []
+  Name: GeminiRest
+  Enabled: true
+  ScriptAsset: !<reference> 5cc639b1-942a-432d-8f50-14c973c2fa2e
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      remoteServiceModule: !<reference.RemoteServiceModule> ce6888ea-ccfe-4e31-a761-6746503661c6
+      internetModule: !<reference.InternetModule> 3e316944-ae83-4382-90c5-d326bed69eb8
+      model: gemini-2.5-flash
+  ScriptTypes:
+    "":
+      {}
+- !<Canvas/641dce10-ce97-4c5d-8c92-e48f435bf3f8>
+  PrefabRemaps:
+    []
+  Name: Canvas
+  Enabled: true
+  UnitType: World
+  SortingType: Hierarchy
+  WorldSpaceRect:
+    left: -256.000000
+    bottom: -256.000000
+    right: 256.000000
+    top: 256.000000
+- !<SceneObject/6894203f-d7be-4706-9ad9-5ee4196f454e>
+  PrefabRemaps:
+    []
+  Name: CalPal UI
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -1.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> ab3dcde0-f2de-4a6d-8b32-55b222790fd4
+  Components:
+    - !<own> 641dce10-ce97-4c5d-8c92-e48f435bf3f8
 - !<SceneObject/8f07ee4d-fe77-492c-bb0a-1547231d0ef0>
   PrefabRemaps:
     []
@@ -328,24 +243,40 @@
     - !<own> f7556b82-3a7a-47e3-acfc-19c323388cb5
   Components:
     []
-- !<ScriptComponent/a4fbc6c6-049d-414d-9f35-c4c95fbd2b39>
+- !<Image/a8ee5c78-16ce-40d1-9fb0-a90c7bb555df>
   PrefabRemaps:
     []
-  Name: RemoteServiceGatewayCredentials
+  Name: Image
   Enabled: true
-  ScriptAsset: !<reference> 37976aca-6847-44c8-88d9-5edb6aadbbf2
-  ScriptInputsDefault:
-    {}
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      openAIToken: ""
-      googleToken: ""
-      snapToken: ""
-  ScriptTypes:
-    "":
-      {}
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 1c3375ce-a69a-45cc-a603-3f38e105f5ae
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/ab3dcde0-f2de-4a6d-8b32-55b222790fd4>
+  PrefabRemaps:
+    []
+  Name: Background
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> a8ee5c78-16ce-40d1-9fb0-a90c7bb555df
 - !<ScriptComponent/bb5edaa6-1eaa-4522-8ea3-45b1e6a4c3a1>
   PrefabRemaps:
     []
@@ -394,7 +325,25 @@
   Children:
     []
   Components:
-    - !<own> 340a12dc-01cd-4de4-978d-5fb096d10826
+    - !<own> 54e2ae2b-ae16-4806-8fb7-1f0a03981372
+- !<ScriptComponent/edb33f45-fd5a-4b96-84f8-31369cb91527>
+  PrefabRemaps:
+    []
+  Name: RemoteServiceGatewayCredentials
+  Enabled: true
+  ScriptAsset: !<reference> 37976aca-6847-44c8-88d9-5edb6aadbbf2
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      openAIToken: ""
+      googleToken: ""
+      snapToken: "]"
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/f54ae76c-931e-4a6f-bb14-f2fcfe412471>
   PrefabRemaps:
     []

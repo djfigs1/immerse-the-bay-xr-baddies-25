@@ -15,7 +15,7 @@ metaInfo:
     []
   lensName: CalPal
   lensDescriptors:
-    []
+    - EXPERIMENTAL_API
   lensApplicability:
     - Front
     - Back

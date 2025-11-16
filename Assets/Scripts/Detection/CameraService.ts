@@ -1,9 +1,12 @@
+import { delay } from "Scripts/Utility/util";
+
 @component
 export class CameraService extends BaseScriptComponent {
   @input cameraModule: CameraModule;
 
   private isEditor = global.deviceInfoSystem.isEditor();
   private cameraTexture: Texture | null = null;
+  private cameraFrame: CameraFrame | null = null;
 
   onAwake() {
     this.createEvent("OnStartEvent").bind(this.start.bind(this));
@@ -11,17 +14,19 @@ export class CameraService extends BaseScriptComponent {
 
   start() {
     // Determine which camera to use based on environment
-    const cameraId = this.isEditor
-      ? CameraModule.CameraId.Default_Color
-      : CameraModule.CameraId.Right_Color;
+    const cameraId = CameraModule.CameraId.Default_Color;
 
     // Create camera request
     const cameraRequest = CameraModule.createCameraRequest();
     cameraRequest.cameraId = cameraId;
-    cameraRequest.imageSmallerDimension = this.isEditor ? 352 : 756;
+    cameraRequest.imageSmallerDimension = 512;
 
     // Request the camera texture
     this.cameraTexture = this.cameraModule.requestCamera(cameraRequest);
+    let camTexControl = this.cameraTexture.control as CameraTextureProvider;
+    camTexControl.onNewFrame.add((frame) => {
+      this.cameraFrame = frame;
+    });
 
     print("CameraService initialized");
   }
@@ -36,39 +41,19 @@ export class CameraService extends BaseScriptComponent {
   /**
    * Capture a snapshot from the camera texture as a ProceduralTexture
    * This can be used for image processing or sending to AI services
+   * Waits for the texture to be loaded before capturing
    */
-  captureSnapshot(): Texture | null {
+  async captureSnapshot(): Promise<Texture | null> {
     if (!this.cameraTexture) {
       print("Warning: Camera texture not initialized");
       return null;
     }
 
+    let provider = this.cameraTexture.control as CameraTextureProvider;
+    while (this.cameraFrame === null) {
+      await delay(this, 0.5);
+    }
+
     return ProceduralTextureProvider.createFromTexture(this.cameraTexture);
-  }
-
-  /**
-   * Convert world position to screen space coordinates
-   * @param camera - The camera component to use for projection
-   * @param worldPos - World position to convert
-   * @returns Normalized screen coordinates (-1 to 1)
-   */
-  worldToScreenSpace(camera: Camera, worldPos: vec3): vec2 {
-    const screenPoint = camera.worldSpaceToScreenSpace(worldPos);
-    const localX = this.remap(screenPoint.x, 0, 1, -1, 1);
-    const localY = this.remap(screenPoint.y, 1, 0, -1, 1);
-    return new vec2(localX, localY);
-  }
-
-  /**
-   * Remap a value from one range to another
-   */
-  private remap(
-    value: number,
-    low1: number,
-    high1: number,
-    low2: number,
-    high2: number
-  ): number {
-    return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);
   }
 }

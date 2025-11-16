@@ -19,7 +19,7 @@ Respond ONLY with JSON in the following structure: 
       "name": "Chocolate Cookie", 
       "center": [0.5,0.5],
       "calories": 123,
-"healthy": "unhealthy"
+"quality": "unhealthy"
     } 
   ] 
 }

@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/4f3a3eed-21c0-4331-bd18-aca6be95c2ad>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c00cb39a-761b-4507-b18a-b4cbfed573ac
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c00cb39a-761b-4507-b18a-b4cbfed573ac
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 255092b3-646a-4235-a6f5-c785e91769a8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/255092b3-646a-4235-a6f5-c785e91769a8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b8804cc5-36c3-4b49-acab-a3dee8d9944a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    container: false
+    markerPrefab: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - container: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      markerPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject container {"hint":"Container scene object to hold all detection markers"}'
+    - '// @input Asset.ObjectPrefab markerPrefab {"hint":"Prefab to instantiate for each detection marker"}'
