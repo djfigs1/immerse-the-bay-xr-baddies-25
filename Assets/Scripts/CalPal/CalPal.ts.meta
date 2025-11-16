@@ -26,10 +26,9 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    cameraService: false
-    detectionSquares: false
-    displayMaterial: false
+    depthCache: false
     foodDetector: false
+    marker3D: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -40,14 +39,12 @@
     []
   DefaultScriptInputs:
     - foodDetector: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
-      detectionSquares: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
-      cameraService: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
-      displayMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      depthCache: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      marker3D: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input AssignableType foodDetector
-    - // @input AssignableType_1 detectionSquares
-    - // @input AssignableType_2 cameraService
-    - '// @input Asset.Material displayMaterial {"hint":"Material to display the captured camera texture"}'
+    - // @input AssignableType_1 depthCache
+    - // @input Asset.ObjectPrefab marker3D

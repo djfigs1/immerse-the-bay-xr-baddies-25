@@ -61,7 +61,7 @@ export class DetectionSquares extends BaseScriptComponent {
     const marker = markerObj.getComponent(Marker.getTypeName()) as Marker;
 
     if (marker) {
-      marker.setText(detection.name);
+      marker.show(detection);
     } else {
       print("Warning: Marker prefab does not have a Marker component");
     }

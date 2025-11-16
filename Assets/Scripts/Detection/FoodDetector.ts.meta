@@ -26,7 +26,6 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    cameraService: false
     geminiClient: false
     imagePrompt: false
   ScriptTypesHidden:
@@ -38,13 +37,11 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - cameraService: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
-      geminiClient: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+    - geminiClient: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       imagePrompt: "What food items can you see in this image? Provide nutritional information."
   ScriptTypes:
     -
       {}
   InputLines:
-    - // @input AssignableType cameraService
-    - // @input AssignableType_1 geminiClient
+    - // @input AssignableType geminiClient
     - '// @input string imagePrompt = "What food items can you see in this image? Provide nutritional information." {"hint":"The prompt to send with the camera image", "widget":"text_area"}'
