@@ -26,6 +26,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    character: false
     foodDetector: false
     healthGoals: false
     scanTrigger: false
@@ -41,6 +42,7 @@
     - foodDetector: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       healthGoals: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       scanTrigger: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      character: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -48,3 +50,4 @@
     - // @input AssignableType foodDetector
     - // @input AssignableType_1 healthGoals
     - // @input AssignableType_2 scanTrigger
+    - // @input AssignableType_3 character

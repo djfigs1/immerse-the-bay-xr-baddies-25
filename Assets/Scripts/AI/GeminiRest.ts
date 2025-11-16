@@ -84,10 +84,17 @@ export class GeminiRestClient extends BaseScriptComponent {
         bodyJson.candidates?.[0]?.content?.parts?.[0]?.text &&
         bodyJson.candidates[0].content.parts[0].text.length > 0
       ) {
-        return bodyJson.candidates[0].content.parts[0].text.replaceAll(
-          "\\",
-          ""
-        );
+        let text = bodyJson.candidates[0].content.parts[0].text;
+
+        // Remove escape characters at the very start/end
+        if (text.startsWith("\\{")) {
+          text = "{" + text.slice(2);
+        }
+        if (text.endsWith("\\}")) {
+          text = text.slice(0, -2) + "}";
+        }
+
+        return text;
       } else {
         throw new Error("No text in response");
       }
@@ -172,7 +179,17 @@ export class GeminiRestClient extends BaseScriptComponent {
         bodyJson.candidates?.[0]?.content?.parts?.[0]?.text &&
         bodyJson.candidates[0].content.parts[0].text.length > 0
       ) {
-        return bodyJson.candidates[0].content.parts[0].text;
+        let text = bodyJson.candidates[0].content.parts[0].text;
+
+        // Remove escape characters at the very start/end
+        if (text.startsWith("\\{")) {
+          text = "{" + text.slice(2);
+        }
+        if (text.endsWith("\\}")) {
+          text = text.slice(0, -2) + "}";
+        }
+
+        return text;
       } else {
         throw new Error("No text in response");
       }

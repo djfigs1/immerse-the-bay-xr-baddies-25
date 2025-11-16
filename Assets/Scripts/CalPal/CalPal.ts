@@ -3,6 +3,7 @@ import { HealthGoals } from "Scripts/HealthGoal/HealthGoals";
 import { delay } from "Scripts/Utility/util";
 import { FoodDetectionResult } from "../Detection/DetectionResult";
 import { FoodDetector } from "../Detection/FoodDetector";
+import { Character } from "../Character/Character";
 
 @component
 export class CalPal extends BaseScriptComponent {
@@ -12,6 +13,8 @@ export class CalPal extends BaseScriptComponent {
   private healthGoals: HealthGoals;
   @input
   private scanTrigger: TriggerCommand;
+  @input
+  private character: Character;
 
   private calorieGoal: number | undefined;
   private scanCallback: (() => void) | null = null;
@@ -29,12 +32,41 @@ export class CalPal extends BaseScriptComponent {
   private async doCalorieWorkflow() {
     const goal = await this.getCalorieGoal();
     print(`User's daily calorie goal: ${goal}`);
-    await this.detectFood(goal);
+    this.calorieGoal = goal;
+
+    // Set up trigger callback for scanning
+    this.setupCaptureTrigger();
+  }
+
+  /**
+   * Set up the scan trigger callback
+   */
+  private setupCaptureTrigger(): void {
+    if (!this.scanTrigger) {
+      print("Warning: ScanTrigger not assigned");
+      return;
+    }
+
+    // Create and store the callback
+    this.scanCallback = () => {
+      print("Scan trigger fired!");
+      this.detectFood(this.calorieGoal);
+    };
+
+    // Add the callback to the trigger
+    this.scanTrigger.addTriggerCallback(this.scanCallback);
+    print("Scan trigger callback registered");
   }
 
   private async getCalorieGoal() {
     const goal = await this.healthGoals.dictateGoal();
     await this.healthGoals.showCalorieConfirmation(goal.goal!);
+
+    // Instruct user to use capture command
+    if (this.character) {
+      this.character.sayText("Say 'capture' to examine your food");
+    }
+
     return goal.goal!;
   }
 
@@ -45,6 +77,12 @@ export class CalPal extends BaseScriptComponent {
     if (!this.foodDetector) {
       print("Error: FoodDetector not assigned");
       return;
+    }
+
+    // Remove handler to prevent duplicate scan requests
+    if (this.scanTrigger && this.scanCallback) {
+      this.scanTrigger.removeTriggerCallback(this.scanCallback);
+      print("Scan trigger handler removed during detection");
     }
 
     try {
@@ -63,6 +101,12 @@ export class CalPal extends BaseScriptComponent {
       });
     } catch (error) {
       print("Food detection failed: " + error);
+    } finally {
+      // Re-add handler after detection completes
+      if (this.scanTrigger && this.scanCallback) {
+        this.scanTrigger.addTriggerCallback(this.scanCallback);
+        print("Scan trigger handler re-added after detection");
+      }
     }
   }
 }
