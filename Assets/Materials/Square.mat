@@ -1,8 +1,8 @@
-- !<Material/1c3375ce-a69a-45cc-a603-3f38e105f5ae>
+- !<Material/19907a39-0f73-423f-bd0f-b33a239f0d10>
   PackagePath: ""
   PassesInfo:
-    - !<own> ebe4263a-3921-485f-82ea-dbe52ea13d17
-- !<PassInfo/ebe4263a-3921-485f-82ea-dbe52ea13d17>
+    - !<own> f98fdd9c-325e-48d4-b7ec-7f90a9f60e9f
+- !<PassInfo/f98fdd9c-325e-48d4-b7ec-7f90a9f60e9f>
   CachedProperties:
     - Port_Depth_N004:
         typeIdx: 1
@@ -89,5 +89,5 @@
       value: 0
     baseColor:
       typeIdx: 5
-      value: {x: 0.056916, y: 0.095766, z: 0.861067, w: 0.100008}
+      value: {x: 0.908537, y: 0.000000, z: 0.132433, w: 0.100008}
   Pass: !<reference> 2249ff43-3d4d-44bc-8f07-715baf45b746

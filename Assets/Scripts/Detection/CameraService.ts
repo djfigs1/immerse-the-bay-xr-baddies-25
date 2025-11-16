@@ -14,7 +14,7 @@ export class CameraService extends BaseScriptComponent {
 
   start() {
     // Determine which camera to use based on environment
-    const cameraId = CameraModule.CameraId.Default_Color;
+    const cameraId = CameraModule.CameraId.Right_Color;
 
     // Create camera request
     const cameraRequest = CameraModule.createCameraRequest();

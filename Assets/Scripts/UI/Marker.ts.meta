@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/5ff7be4d-5039-4a1e-92e8-81067b6979b6>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 5949e002-18b9-4e41-9f26-2e7551b036ca
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 5949e002-18b9-4e41-9f26-2e7551b036ca
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> cf1ec9d5-82fc-4b00-a9b7-f117852733a6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/cf1ec9d5-82fc-4b00-a9b7-f117852733a6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4fa91d48-853d-4ec9-9a57-43e58e0d5f33
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    textField: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - textField: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Text textField {"hint":"Text component to display marker label"}'

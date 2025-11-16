@@ -1,4 +1,5 @@
 import { FoodDetectionResult } from "../Detection/DetectionResult";
+import { Marker } from "./Marker";
 
 @component
 export class DetectionSquares extends BaseScriptComponent {
@@ -45,7 +46,7 @@ export class DetectionSquares extends BaseScriptComponent {
 
   /**
    * Create a marker at the specified normalized coordinates
-   * @param detection Detection result with center coordinates [x, y] in normalized space (-1 to 1)
+   * @param detection Detection result with center coordinates [x, y] in range [0, 1]
    */
   private createMarker(detection: FoodDetectionResult): void {
     if (!this.markerPrefab) {
@@ -55,6 +56,15 @@ export class DetectionSquares extends BaseScriptComponent {
 
     // Instantiate the marker prefab
     const markerObj = this.markerPrefab.instantiate(this.container);
+
+    // Get the Marker component
+    const marker = markerObj.getComponent(Marker.getTypeName()) as Marker;
+
+    if (marker) {
+      marker.setText(detection.name);
+    } else {
+      print("Warning: Marker prefab does not have a Marker component");
+    }
 
     // Get the ScreenTransform component
     const screenTransform = markerObj.getComponent(
@@ -67,19 +77,21 @@ export class DetectionSquares extends BaseScriptComponent {
       return;
     }
 
-    // Set position based on normalized coordinates
-    // detection.center is [x, y] where both are in range [-1, 1]
-    const [x, y] = detection.center;
+    // Convert from [0, 1] detection coordinates to [-1, 1] screen coordinates
+    // detection.center is [x, y] where both are in range [0, 1]
+    // ScreenTransform anchors use [-1, 1] where:
+    //   x: -1 (left) to 1 (right)
+    //   y: -1 (bottom) to 1 (top)
+    const [x0to1, y0to1] = detection.center;
+    const x = x0to1 * 2 - 1; // Convert [0, 1] to [-1, 1]
+    const y = y0to1 * 2 - 1; // Convert [0, 1] to [-1, 1]
 
-    // ScreenTransform uses vec3 for position
-    // x: -1 (left) to 1 (right)
-    // y: -1 (bottom) to 1 (top)
-    screenTransform.anchors.setCenter(new vec2(x, y));
+    screenTransform.anchors.setCenter(new vec2(x, -y));
 
     print(
-      `Created marker for ${detection.name} at (${x.toFixed(2)}, ${y.toFixed(
+      `Created marker for ${detection.name} at screen coords (${x.toFixed(
         2
-      )})`
+      )}, ${y.toFixed(2)})`
     );
   }
 }

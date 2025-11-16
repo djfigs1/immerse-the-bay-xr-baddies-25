@@ -1,6 +1,7 @@
 import { FoodDetector } from "../Detection/FoodDetector";
 import { FoodDetectionResult } from "../Detection/DetectionResult";
 import { DetectionSquares } from "../UI/DetectionSquares";
+import { CameraService } from "../Detection/CameraService";
 
 @component
 export class CalPal extends BaseScriptComponent {
@@ -9,6 +10,13 @@ export class CalPal extends BaseScriptComponent {
 
   @input
   private detectionSquares: DetectionSquares;
+
+  @input
+  private cameraService: CameraService;
+
+  @input
+  @hint("Material to display the captured camera texture")
+  private displayMaterial: Material;
 
   onAwake() {
     print("CalPal initialized");
@@ -30,6 +38,15 @@ export class CalPal extends BaseScriptComponent {
 
     try {
       print("Starting food detection...");
+
+      // Capture the camera texture
+      const snapshot = await this.cameraService.captureSnapshot();
+
+      if (snapshot && this.displayMaterial) {
+        this.displayMaterial.mainPass.baseTex = snapshot;
+        print("Camera texture set on display material");
+      }
+
       const results = await this.foodDetector.detect();
 
       print(`Detected ${results.length} food items:`);
