@@ -1,0 +1,167 @@
+- !<AssetImportMetadata/f5f72c2c-d72f-4512-a824-e666b25f04a2>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> a33933bc-d2e7-4dca-803a-057eec3b99d1
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> a33933bc-d2e7-4dca-803a-057eec3b99d1
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 811f2582-48b5-4627-bc88-135655a92502
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/4e61f399-79c8-432f-7083-b5c8edfbe4cc>
+  PrefabRemaps:
+    []
+  Name: Billboard
+  Enabled: true
+  ScriptAsset: !<reference> 74eafc23-e98b-4073-ab18-82ca532994e3
+  ScriptInputsDefault:
+    _yAxisEnabled: true
+    _zAxisEnabled: true
+    _axisBufferDegrees: true
+    _axisEasing: true
+    duration: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _xAxisEnabled: true
+      _yAxisEnabled: true
+      _zAxisEnabled: false
+      _axisBufferDegrees: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      _axisEasing: !<Vec3> {x: 1.000000, y: 1.000000, z: 1.000000}
+      duration: 0.033000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/5fe155bf-509a-4335-67d1-49d15f708453>
+  PrefabRemaps:
+    []
+  Name: Marker
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 14.515594}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> ff1197ac-2449-4c3d-647e-f13fc9f235d9
+    - !<own> adea3ece-40cd-48a0-7d55-4ed42e66875a
+  Components:
+    - !<own> 9197394e-2a88-472e-629c-25c31db7581c
+- !<RenderMeshVisual/68f921af-7db0-44db-7f9c-c9f803816c99>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> b5ca82c3-cf8f-49e0-9b6a-cd1e8faef951
+  Mesh: !<reference> 24e06446-5770-455a-a68e-27823997838c
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ObjectPrefabAssetData/811f2582-48b5-4627-bc88-135655a92502>
+  Prototype: !<ObjectOwner/4bf4783d-52b5-4688-9308-0bfa9585ae5b>
+    PackagePath: ""
+    objects:
+      - !<own> 5fe155bf-509a-4335-67d1-49d15f708453
+- !<ScriptComponent/9197394e-2a88-472e-629c-25c31db7581c>
+  PrefabRemaps:
+    []
+  Name: Marker
+  Enabled: true
+  ScriptAsset: !<reference> 5949e002-18b9-4e41-9f26-2e7551b036ca
+  ScriptInputsDefault:
+    interactable: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      text3d: !<reference.Text3D> e6401ec7-ccc5-4192-73ca-f94aaa3ff841
+      interactable: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/adea3ece-40cd-48a0-7d55-4ed42e66875a>
+  PrefabRemaps:
+    []
+  Name: Sphere
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 68f921af-7db0-44db-7f9c-c9f803816c99
+- !<Text3D/e6401ec7-ccc5-4192-73ca-f94aaa3ff841>
+  PrefabRemaps:
+    []
+  Name: Text3D
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> d06fba53-c164-460e-aeab-329bfc3fb951
+  Text: |+
+    
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  ExtrusionDepth: 0.100000
+  ExtrudeDirection: Both
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -7.500000
+    bottom: -2.250000
+    right: 7.500000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  EnableBatching: false
+- !<SceneObject/ff1197ac-2449-4c3d-647e-f13fc9f235d9>
+  PrefabRemaps:
+    []
+  Name: Text3d
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 1.307574, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> e6401ec7-ccc5-4192-73ca-f94aaa3ff841
+    - !<own> 4e61f399-79c8-432f-7083-b5c8edfbe4cc

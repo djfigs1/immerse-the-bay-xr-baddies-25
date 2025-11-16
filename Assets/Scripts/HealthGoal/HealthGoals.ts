@@ -1,7 +1,7 @@
 import { GeminiRestClient } from "../AI/GeminiRest";
-import { HealthGoalResult } from "./HealthGoalResult";
 import { VoiceInput } from "../Utility/VoiceInput";
-import { HealthGoalsDisplay } from "./HealthGoalsDisplay";
+import { HealthGoalResult } from "./HealthGoalResult";
+import { Character } from "../Character/Character";
 
 @component
 export class HealthGoals extends BaseScriptComponent {
@@ -13,8 +13,8 @@ export class HealthGoals extends BaseScriptComponent {
   private voiceInput: VoiceInput;
 
   @input
-  @hint("HealthGoalsDisplay component for showing clarifying questions")
-  private display: HealthGoalsDisplay;
+  @hint("Character component to display information through speech")
+  private character: Character;
 
   @input
   @widget(new TextAreaWidget())
@@ -96,20 +96,19 @@ export class HealthGoals extends BaseScriptComponent {
    * @returns Promise that resolves after 5 seconds
    */
   public async showCalorieConfirmation(calorieGoal: number): Promise<void> {
-    if (!this.display) {
-      print("Warning: Display component not assigned");
+    if (!this.character) {
+      print("Warning: Character component not assigned");
       return;
     }
 
     const message = `Okay great! I'll set a goal of ${calorieGoal} calories for you.`;
     print(message);
-    this.display.setText(message);
+    this.character.sayText(message, 5.0);
 
     // Wait for 5 seconds
     return new Promise<void>((resolve) => {
       const delayedEvent = this.createEvent("DelayedCallbackEvent");
       delayedEvent.bind(() => {
-        this.display.clearText();
         resolve();
       });
       delayedEvent.reset(5.0); // 5 seconds
@@ -117,13 +116,36 @@ export class HealthGoals extends BaseScriptComponent {
   }
 
   /**
-   * Use speech-to-text to dictate a health goal prompt
+   * Start health goal dictation flow with initial prompt
+   * @param onDictationStop Optional callback called when dictation stops (receives final transcribed text)
+   * @param onClarificationRequested Optional callback called when clarification is requested (receives clarification question)
+   * @returns Promise that resolves with HealthGoalResult based on the dictated input
+   */
+  public async dictateGoal(
+    onDictationStop?: (transcribedText: string) => void,
+    onClarificationRequested?: (clarification: string) => void
+  ): Promise<HealthGoalResult> {
+    if (!this.character) {
+      print("Warning: Character component not assigned");
+    } else {
+      this.character.sayText("What are your health goals?");
+    }
+
+    return this.dictateGoalRecursive(
+      onDictationStop,
+      onClarificationRequested,
+      ""
+    );
+  }
+
+  /**
+   * Use speech-to-text to dictate a health goal prompt (recursive for clarifications)
    * @param onDictationStop Optional callback called when dictation stops (receives final transcribed text)
    * @param onClarificationRequested Optional callback called when clarification is requested (receives clarification question)
    * @param conversationHistory Internal parameter for maintaining conversation context across clarifications
    * @returns Promise that resolves with HealthGoalResult based on the dictated input
    */
-  public async dictateGoal(
+  private async dictateGoalRecursive(
     onDictationStop?: (transcribedText: string) => void,
     onClarificationRequested?: (clarification: string) => void,
     conversationHistory: string = ""
@@ -167,7 +189,9 @@ export class HealthGoals extends BaseScriptComponent {
               // Check if model is asking for clarification
               if (goal.clarify) {
                 print(`Clarification needed: ${goal.clarify}`);
-                this.display.setText(goal.clarify);
+                if (this.character) {
+                  this.character.sayText(goal.clarify);
+                }
 
                 // Call the optional clarification callback
                 if (onClarificationRequested) {
@@ -179,7 +203,7 @@ export class HealthGoals extends BaseScriptComponent {
                   updatedHistory + `<YOU>${JSON.stringify(goal)}</YOU>\n`;
 
                 // Begin dictating again for clarification with updated history
-                this.dictateGoal(
+                this.dictateGoalRecursive(
                   onDictationStop,
                   onClarificationRequested,
                   historyWithClarification

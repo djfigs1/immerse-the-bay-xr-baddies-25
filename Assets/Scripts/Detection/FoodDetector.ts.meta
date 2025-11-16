@@ -26,8 +26,11 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    character: false
+    depthCache: false
     geminiClient: false
     imagePrompt: false
+    marker3D: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -38,10 +41,16 @@
     []
   DefaultScriptInputs:
     - geminiClient: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      depthCache: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      marker3D: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      character: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
       imagePrompt: "What food items can you see in this image? Provide nutritional information."
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input AssignableType geminiClient
+    - '// @input AssignableType_1 depthCache {"hint":"DepthCache component for world position calculation"}'
+    - '// @input Asset.ObjectPrefab marker3D {"hint":"3D marker prefab to instantiate at food locations"}'
+    - '// @input AssignableType_2 character {"hint":"Character component to respond to food selections"}'
     - '// @input string imagePrompt = "What food items can you see in this image? Provide nutritional information." {"hint":"The prompt to send with the camera image", "widget":"text_area"}'

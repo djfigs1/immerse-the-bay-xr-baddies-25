@@ -26,7 +26,14 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    {}
+    greenRabbit: false
+    orangeRabbit: false
+    rabbitEars: false
+    redRabbit: false
+    rotatingRabbit: false
+    speechBubbleParent: false
+    speechText: false
+    tailWagRabbit: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -36,10 +43,23 @@
   Attachments:
     []
   DefaultScriptInputs:
-    -
-      {}
+    - speechText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      speechBubbleParent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      tailWagRabbit: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rabbitEars: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      greenRabbit: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      orangeRabbit: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      redRabbit: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rotatingRabbit: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
-    []
+    - '// @input Component.Text speechText {"hint":"Text component for the speech bubble"}'
+    - '// @input SceneObject speechBubbleParent {"hint":"Parent scene object containing the speech bubble"}'
+    - '// @input SceneObject tailWagRabbit {"hint":"Tail wag rabbit model scene object"}'
+    - '// @input SceneObject rabbitEars {"hint":"Rabbit ears model scene object"}'
+    - '// @input SceneObject greenRabbit {"hint":"Green rabbit model scene object"}'
+    - '// @input SceneObject orangeRabbit {"hint":"Orange rabbit model scene object"}'
+    - '// @input SceneObject redRabbit {"hint":"Red rabbit model scene object"}'
+    - '// @input SceneObject rotatingRabbit {"hint":"Rotating rabbit model scene object"}'

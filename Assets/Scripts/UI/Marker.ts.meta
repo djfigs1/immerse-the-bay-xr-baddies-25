@@ -26,6 +26,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    interactable: false
     text3d: false
   ScriptTypesHidden:
     {}
@@ -37,8 +38,10 @@
     []
   DefaultScriptInputs:
     - text3d: !<reference.Text3D> 00000000-0000-0000-0000-000000000000
+      interactable: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - '// @input Component.Text3D text3d {"hint":"Text component to display marker label"}'
+    - '// @input AssignableType interactable {"hint":"InteractionComponent to listen for tap/click events"}'

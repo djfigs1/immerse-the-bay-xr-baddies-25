@@ -26,7 +26,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    display: false
+    character: false
     geminiClient: false
     prompt: false
     voiceInput: false
@@ -41,7 +41,7 @@
   DefaultScriptInputs:
     - geminiClient: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       voiceInput: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
-      display: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      character: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
       prompt: ""
   ScriptTypes:
     -
@@ -49,5 +49,5 @@
   InputLines:
     - // @input AssignableType geminiClient
     - '// @input AssignableType_1 voiceInput {"hint":"VoiceInput component for speech-to-text transcription"}'
-    - '// @input AssignableType_2 display {"hint":"HealthGoalsDisplay component for showing clarifying questions"}'
+    - '// @input AssignableType_2 character {"hint":"Character component to display information through speech"}'
     - '// @input string prompt {"hint":"The prompt to send to Gemini for calorie goal generation", "widget":"text_area"}'
