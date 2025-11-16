@@ -1,12 +1,8 @@
 import { GeminiRestClient } from "Scripts/AI/GeminiRest";
-import { CameraService } from "../Detection/CameraService";
 import { FoodDetectionResult } from "./DetectionResult";
 
 @component
 export class FoodDetector extends BaseScriptComponent {
-  @input
-  private cameraService: CameraService;
-
   @input
   private geminiClient: GeminiRestClient;
 
@@ -23,13 +19,9 @@ export class FoodDetector extends BaseScriptComponent {
   /**
    * Detect food items in the current camera view
    */
-  async detect(): Promise<FoodDetectionResult[]> {
-    // Capture snapshot (captureSnapshot now handles waiting for texture to load)
-    const snapshot = await this.cameraService.captureSnapshot();
-
-    if (!snapshot) {
-      throw new Error("Failed to capture camera snapshot");
-    }
+  async detect(tex: Texture): Promise<FoodDetectionResult[]> {
+    // Capture snapshot from camera
+    const snapshot = ProceduralTextureProvider.createFromTexture(tex);
 
     // Send to Gemini for analysis
     const prompt =

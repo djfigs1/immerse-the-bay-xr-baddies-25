@@ -1,31 +1,47 @@
+import { FoodDetectionResult } from "../Detection/DetectionResult";
+
 @component
 export class Marker extends BaseScriptComponent {
   @input
   @hint("Text component to display marker label")
-  textField: Text;
+  text3d: Text3D;
+
+  private currentResult: FoodDetectionResult | null = null;
 
   /**
-   * Set the text displayed on this marker
-   * @param text The text to display
+   * Show the marker with the detection result information
+   * @param result The food detection result to display
    */
-  setText(text: string): void {
-    if (!this.textField) {
+  show(result: FoodDetectionResult): void {
+    this.currentResult = result;
+
+    // Set the text field with the food name
+    if (this.text3d) {
+      this.text3d.text = result.name;
+    } else {
       print("Warning: Text field not assigned to marker");
-      return;
     }
 
-    this.textField.text = text;
+    // Enable the marker scene object
+    this.getSceneObject().enabled = true;
+
+    print(
+      `Marker showing: ${result.name} (${result.calories} cal, ${result.quality})`
+    );
   }
 
   /**
-   * Get the current text displayed on this marker
-   * @returns The current text
+   * Hide the marker
    */
-  getText(): string {
-    if (!this.textField) {
-      return "";
-    }
+  hide(): void {
+    this.getSceneObject().enabled = false;
+  }
 
-    return this.textField.text;
+  /**
+   * Get the current detection result
+   * @returns The current detection result or null if none
+   */
+  getResult(): FoodDetectionResult | null {
+    return this.currentResult;
   }
 }
